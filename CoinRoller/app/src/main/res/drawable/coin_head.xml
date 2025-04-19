@@ -1,0 +1,18 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="100dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+
+    <!-- Lingkaran koin -->
+    <path
+        android:fillColor="#FFD700"
+        android:strokeColor="#DAA520"
+        android:strokeWidth="4"
+        android:pathData="M 50,2 A 48,48 0 1,1 50,98 A 48,48 0 1,1 50,2 Z"/>
+
+    <!-- Huruf 'H' di tengah koin -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M 35,40 V 60 H 40 V 50 H 50 V 60 H 55 V 40 H 50 V 47 H 40 V 40 Z"/>
+</vector>
