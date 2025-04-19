@@ -51,30 +51,6 @@ enum class LemonadeState {
 }
 
 @Composable
-fun DisplayLemonadeState(
-    displayTitleId: Int,
-    imgContentId: Int,
-    imgDescId: Int,
-    clickAct: () -> Unit
-) {
-    Column (
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
-        modifier = Modifier.fillMaxSize()
-    ){
-        Text(text = stringResource(displayTitleId))
-        Spacer(modifier = Modifier.height(32.dp))
-        Image(
-            painter = painterResource(imgContentId),
-            contentDescription = stringResource(imgDescId),
-            modifier = Modifier
-                .wrapContentSize()
-                .clickable{clickAct()}
-        )
-    }
-}
-
-@Composable
 fun LemonApp() {
     // A surface container using the 'background' color from the theme
     val lemonCountInit = 1
@@ -86,6 +62,7 @@ fun LemonApp() {
     var squeezeCount by remember { mutableIntStateOf(Random.nextInt(minSqueezeCount, maxSqueezeCount)) }
     var lemonCount by remember { mutableIntStateOf(lemonCountInit) }
     var drinkCount by remember { mutableIntStateOf(drinkCountInit) }
+
     fun tapLemonTreeAction() {
         lemonCount -= 1
         Log.d("tapLemonTreeAction", "lemon count: $lemonCount")
@@ -152,6 +129,30 @@ fun LemonApp() {
                 )
             }
         }
+    }
+}
+
+@Composable
+fun DisplayLemonadeState(
+    displayTitleId: Int,
+    imgContentId: Int,
+    imgDescId: Int,
+    clickAct: () -> Unit
+) {
+    Column (
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+        modifier = Modifier.fillMaxSize()
+    ){
+        Text(text = stringResource(displayTitleId))
+        Spacer(modifier = Modifier.height(32.dp))
+        Image(
+            painter = painterResource(imgContentId),
+            contentDescription = stringResource(imgDescId),
+            modifier = Modifier
+                .wrapContentSize()
+                .clickable{clickAct()}
+        )
     }
 }
 
