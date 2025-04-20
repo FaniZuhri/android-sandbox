@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">art space app</string>
+    <string name="app_title">Vincent van Gogh Arts</string>
+    <string name="artist">Vincent van Gogh</string>
+</resources>
