@@ -1,8 +1,12 @@
 package com.example.dvdrentalapp
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -13,14 +17,19 @@ import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CheckoutScreen(selectedFilms: List<Film>, onCheckoutDone: () -> Unit) {
+fun CheckoutScreen(selectedFilms: List<Film>, onCheckoutDone: () -> Unit, onBack: () -> Unit) {
     var borrowerName by remember { mutableStateOf("") }
     val totalPrice = selectedFilms.size * 10_000
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Checkout") }
+                title = { Text("Checkout") },
+                navigationIcon = {
+                    IconButton(onClick = onBack) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+                    }
+                }
             )
         }
     ) { paddingValues ->

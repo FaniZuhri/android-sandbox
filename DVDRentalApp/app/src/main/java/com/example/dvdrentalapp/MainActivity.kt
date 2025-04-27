@@ -52,10 +52,12 @@ fun DvdRentalApp() {
     }
 
     when {
-        checkout -> CheckoutScreen(selectedFilms) {
-            checkout = false
-            selectedFilms.clear()
-        }
+        checkout -> CheckoutScreen(
+            selectedFilms,
+            onCheckoutDone = { selectedFilms.clear() },
+            onBack = { checkout = false }
+
+        )
         selectedFilm != null -> FilmDetailScreen(film = selectedFilm!!, onBack = { selectedFilm = null }, onSelect = {
             selectedFilms.add(it)
         })
