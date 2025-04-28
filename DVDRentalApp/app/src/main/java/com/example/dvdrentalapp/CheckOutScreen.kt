@@ -7,6 +7,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -45,11 +46,30 @@ fun CheckoutScreen(selectedFilms: List<Film>, onCheckoutDone: () -> Unit, onBack
             )
             Spacer(modifier = Modifier.height(16.dp))
             Text(text = "Total Film Dipilih: ${selectedFilms.size}")
+            Text(
+                text = "Film yang dipilih:",
+                style = MaterialTheme.typography.bodyLarge,
+                modifier = Modifier.padding(bottom = 16.dp)
+            )
+
+            selectedFilms.forEach { film ->
+                FilmItemCheckout(film)
+                Spacer(modifier = Modifier.height(8.dp))
+            }
             Text(text = "Total Harga: Rp $totalPrice")
             Spacer(modifier = Modifier.height(16.dp))
             Button(onClick = onCheckoutDone, modifier = Modifier.fillMaxWidth()) {
                 Text("Selesai")
             }
         }
+    }
+}
+
+@Composable
+fun FilmItemCheckout(film: Film) {
+    Column(modifier = Modifier.fillMaxWidth()) {
+        Text(text = "Judul: ${film.title}", style = MaterialTheme.typography.bodyMedium)
+        Text(text = "Tahun: ${film.year}", style = MaterialTheme.typography.bodySmall)
+        Text(text = "Harga: Rp 10.000", style = MaterialTheme.typography.bodySmall)
     }
 }
